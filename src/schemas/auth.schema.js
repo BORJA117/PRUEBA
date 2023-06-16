@@ -4,47 +4,47 @@ export const signupSchema = z
   .object({
     fullname: z
       .string({
-        required_error: "Fullname is required",
+        required_error: "Se requiere nombre completo",
       })
       .min(3, {
-        message: "Fullname must be at least 3 characters long",
+        message: "El nombre completo debe tener al menos 3 caracteres",
       }),
     email: z
       .string({
-        required_error: "Email is required",
+        required_error: "El correo electrónico es obligatorio",
       })
       .email({
-        message: "Email is not valid",
+        message: "El correo no es válido",
       }),
     password1: z
       .string({
-        required_error: "Password is required",
+        required_error: "se requiere contraseña",
       })
       .min(6, {
-        message: "Password must be at least 6 characters long",
+        message: "La contraseña debe contener 6 caracteres como mínimo",
       }),
     password2: z.string({
-      required_error: "Password is required",
+      required_error: "se requiere contraseña",
     }),
   })
   .refine((data) => data.password1 === data.password2, {
-    message: "Passwords do not match",
+    message: "Las contraseñas no coinciden",
     path: ["password2"],
   });
 
 export const signinSchema = z.object({
   email: z
     .string({
-      required_error: "Email is required",
+      required_error: "correo electronico es requerido",
     })
     .email({
-      message: "Email is not valid",
+      message: "El correo no es válido",
     }),
   password: z
     .string({
-      required_error: "Password is required",
+      required_error: "se requiere contraseña",
     })
     .min(6, {
-      message: "Password must be at least 6 characters long",
+      message: "La contraseña debe contener 6 caracteres como mínimo",
     }),
 });
